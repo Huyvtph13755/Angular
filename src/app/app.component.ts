@@ -18,7 +18,7 @@ export class AppComponent {
     {name: 'Huy5', msv: 'ph137555', status: 1}
   ]
   champs = [
-    {name: "Jhin", dame: 100, defend: 200, speed: 20, price: 6300, avatar: "https://lienminh.garena.vn/images/champions/skin/202_Jhin/0.jpg"},
+    {name: "Jhin", dame: 100, defend: 200, speed: 20, price: 400, avatar: "https://lienminh.garena.vn/images/champions/skin/202_Jhin/0.jpg"},
     {name: "Jax", dame: 511, defend: 210, speed: 30, price: 6300, avatar: "https://images.contentstack.io/v3/assets/blt187521ff0727be24/bltd4fed7a873727d60/60ee0e44855e1f64f143ef7c/Jax_0.jpg"},
     {name: "Master Yi", dame: 200, defend: 240, speed: 40, price: 6300, avatar: "https://hoiquancaothu.com/images/skins/toc-chien/masteryi-kiem-su-wuju.jpg"},
     {name: "Yasuo", dame: 300, defend: 280, speed: 10, price: 6300, avatar: "https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt41c476486b063ef8/60ee13df31f9ee2ab08a4dfe/Yasuo_0.jpg"},

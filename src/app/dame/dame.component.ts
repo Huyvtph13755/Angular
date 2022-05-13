@@ -6,8 +6,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./dame.component.css']
 })
 export class DameComponent implements OnInit {
-  @Input('dame') dame:any
-  constructor() { }
+  @Input('dame') dame:number
+  constructor() {
+    this.dame = 0;
+  }
 
   ngOnInit(): void {
   }

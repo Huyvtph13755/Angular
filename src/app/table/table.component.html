@@ -16,8 +16,8 @@
             <td>{{champ.speed}}</td>
             <td>{{champ.price}}</td>
             <td>
-              <app-price [price] = "champ.price" src=""></app-price>
-              <img src={{champ.avatar}} alt={{champ.name}} width="100"></td>
+              <app-price [price] = "champ.price" [src]="champ.avatar"></app-price>
+              <!-- <img src={{champ.avatar}} alt={{champ.name}} width="100"></td> -->
             <!-- <td><img [src]="champ.avatar" [alt]="champ.name" width="100"></td> -->
           </tr>
         </tbody>
