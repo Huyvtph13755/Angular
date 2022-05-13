@@ -8,6 +8,8 @@ import { ChampComponent } from './champ/champ.component';
 import { TableComponent } from './table/table.component';
 import { NameComponent } from './name/name.component';
 import { IdentityComponent } from './identity/identity.component';
+import { DameComponent } from './dame/dame.component';
+import { PriceComponent } from './price/price.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { IdentityComponent } from './identity/identity.component';
     ChampComponent,
     TableComponent,
     NameComponent,
-    IdentityComponent
+    IdentityComponent,
+    DameComponent,
+    PriceComponent
   ],
   imports: [
     BrowserModule,

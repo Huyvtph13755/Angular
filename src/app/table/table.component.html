@@ -11,11 +11,13 @@
         <tbody>
           <tr *ngFor="let champ of champs">
             <td>{{champ.name}}</td>
-            <td>{{champ.dame}}</td>
+            <td><app-dame [dame] = "champ.dame"></app-dame></td>
             <td>{{champ.defend}}</td>
             <td>{{champ.speed}}</td>
             <td>{{champ.price}}</td>
-            <td><img src={{champ.avatar}} alt={{champ.name}} width="100"></td>
+            <td>
+              <app-price [price] = "champ.price" src=""></app-price>
+              <img src={{champ.avatar}} alt={{champ.name}} width="100"></td>
             <!-- <td><img [src]="champ.avatar" [alt]="champ.name" width="100"></td> -->
           </tr>
         </tbody>
