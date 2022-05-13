@@ -1,14 +1,12 @@
 <div>
-  <table class="table">
-    <thead>
-      <th>Name</th>
-      <th>Code</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let student of students">
-        <td>{{student.name}}</td>
-        <td>{{student.msv}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- <button class="btn btn-primary">ABC</button> -->
+  <div>
+    <app-name [name] = "name"></app-name>
+
+  </div>
+  <div>
+    <app-identity [code] = "code"></app-identity>
+  </div>
+  <h1>Champions LOL</h1>
+  <app-table [champions]="champs"></app-table>
 </div>

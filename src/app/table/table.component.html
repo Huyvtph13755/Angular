@@ -1,0 +1,23 @@
+<div>
+    <table class="table table-striped">
+        <thead>
+          <th>Name</th>
+          <th>Dame</th>
+          <th>Defend</th>
+          <th>Speed</th>
+          <th>Price</th>
+          <th>Avatar</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let champ of champs">
+            <td>{{champ.name}}</td>
+            <td>{{champ.dame}}</td>
+            <td>{{champ.defend}}</td>
+            <td>{{champ.speed}}</td>
+            <td>{{champ.price}}</td>
+            <td><img src={{champ.avatar}} alt={{champ.name}} width="100"></td>
+            <!-- <td><img [src]="champ.avatar" [alt]="champ.name" width="100"></td> -->
+          </tr>
+        </tbody>
+      </table>
+</div>
