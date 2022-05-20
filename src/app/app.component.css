@@ -4,3 +4,9 @@
 .color-blue{
     color: blue;
 }
+.dn{
+    display: none;
+}
+.db{
+    display: block;
+}
