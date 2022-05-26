@@ -1,12 +1,18 @@
-.color-red{
-    color: red;
+.carousel-item {
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-.color-blue{
-    color: blue;
-}
-.dn{
-    display: none;
-}
-.db{
-    display: block;
+
+.footer {
+    color: #929292;
+    border-top: 1px solid #a7a7a7;
+    text-align: center;
+    padding: 15px;
+    margin: 0 50px;
+    font-size: 14px;
 }

@@ -1,41 +1,41 @@
-<div class="container">
-  <div>
-    <app-name [name]="name"></app-name>
-    <app-identity [code]="code"></app-identity>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <!-- <a class="navbar-brand" href="#">Start Bootstrap</a> -->
+    <img class="navbar-brand" style="width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/2560px-Playstation_logo_colour.svg.png" />
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/" href="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" href="">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about" href="">About</a>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div>
-    <p>Sự kiện</p>
-    <button class="btn btn-primary" (click)="onClickBtn()">{{showStatus ? "Ẩn" : "Hiện"}}</button>
+</nav>
+
+<header>
+
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')"></div>
+    </div>
   </div>
-  <!-- <div>
-    <label for="input">Sự kiện cho Input</label>
-    <input type="text" id="input" (input)="onInput($event, 'input')">
-  </div> -->
-  <!-- <div class="{{showStatus ? 'db' : 'dn'}}">
-    <h1>Champions LOL</h1>
-    <app-table [champions]="champs"></app-table>
-  </div> -->
-  <div *ngIf="showStatus">
-    <h1>Champions LOL</h1>
-    <app-table [champions]="champs"></app-table>
-  </div>
-  <!-- <label for="input">Name</label>
-  <input type="text" id="input" (input)="onInput($event, 'name')" [value]="inputValue.name">
-  <br>
-  <label for="input">Dame</label>
-  <input type="number" id="input" (input)="onInput($event, 'dame')" [value]="inputValue.dame">
-  <br>
-  <label for="input">Defend</label>
-  <input type="number" id="input" (input)="onInput($event, 'defend')" [value]="inputValue.defend">
-  <br>
-  <label for="input">Speed</label>
-  <input type="number" id="input" (input)="onInput($event, 'speed')" [value]="inputValue.speed">
-  <br>
-  <label for="input">Price</label>
-  <input type="number" id="input" (input)="onInput($event, 'price')" [value]="inputValue.price">
-  <br>
-  <label for="input">Avatar</label>
-  <input type="text" id="input" (input)="onInput($event, 'avatar')" [value]="inputValue.avatar">
-  <br>
-  <button class="btn btn-success" (click)="onSubmit()">Submit</button> -->
-</div>
+</header>
+<router-outlet></router-outlet>
+<footer class="footer">
+  2022 © Huyvtph13755
+</footer>
+<!-- <app-user></app-user> -->

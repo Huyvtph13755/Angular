@@ -13,6 +13,12 @@ import { FormComponent } from './form/form.component';
 // Import FormsModule để dùng
 import { FormsModule } from '@angular/forms';
 import { ShowValidateComponent } from './components/show-validate/show-validate.component';
+import { UserComponent } from './user/user.component';
+import { ListComponent } from './user/list/list.component';
+import { UserFormComponent } from './user/form/form.component';
+import { ProductClientComponent } from './product-client/product-client.component';
+import { AboutClientComponent } from './about-client/about-client.component';
+import { ProductDetailClientComponent } from './product-detail-client/product-detail-client.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { ShowValidateComponent } from './components/show-validate/show-validate.
     DameComponent,
     PriceComponent,
     FormComponent,
-    ShowValidateComponent
+    ShowValidateComponent,
+    UserComponent,
+    ListComponent,
+    UserFormComponent,
+    ProductClientComponent,
+    AboutClientComponent,
+    ProductDetailClientComponent
   ],
   imports: [
     BrowserModule,
