@@ -18,7 +18,10 @@ import { ListComponent } from './user/list/list.component';
 import { UserFormComponent } from './user/form/form.component';
 import { ProductClientComponent } from './product-client/product-client.component';
 import { AboutClientComponent } from './about-client/about-client.component';
-import { ProductDetailClientComponent } from './product-detail-client/product-detail-client.component'
+import { ProductDetailClientComponent } from './product-detail-client/product-detail-client.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
+import { HomeClientComponent } from './home-client/home-client.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { ProductDetailClientComponent } from './product-detail-client/product-de
     UserFormComponent,
     ProductClientComponent,
     AboutClientComponent,
-    ProductDetailClientComponent
+    ProductDetailClientComponent,
+    AdminLayoutComponent,
+    ClientLayoutComponent,
+    HomeClientComponent
   ],
   imports: [
     BrowserModule,
