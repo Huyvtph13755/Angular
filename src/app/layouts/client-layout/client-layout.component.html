@@ -18,8 +18,23 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/about">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/admin">Admin</a>
+          <li>
+            <div class="dropdown" *ngIf="loggedInUser">
+              <button class="dropbtn btn btn-primary">{{loggedInUser.user.name}}</button>
+              <div class="dropdown-content">
+                <a href="#" *ngIf="loggedInUser.user.role == 1">Admin</a>
+                <a href="#">Giỏ hàng</a>
+                <button (click)="onLogout()">Đăng xuất</button>
+              </div>
+            </div>
+            <div class="dropdown" *ngIf="!loggedInUser">
+              <button class="dropbtn btn btn-primary">Tài khoản</button>
+              <div class="dropdown-content">
+                <a href="#">Giỏ hàng</a>
+                <a routerLink="/auth/login">Đăng nhập</a>
+                <a href="#">Đăng kí</a>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -33,11 +48,8 @@
       </div>
     </div>
   </header>
-
-  <section>
       <!-- render children của path '' -->
       <router-outlet></router-outlet>
-  </section>
   <footer class="footer">
     2022 © Huyvtph13755
   </footer>
