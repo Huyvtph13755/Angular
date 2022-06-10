@@ -9,11 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-loginForm: FormGroup
+  loginForm: FormGroup
   constructor(
     private authService: AuthService,
-    private router : Router
-  ) { 
+    private router: Router
+  ) {
     this.loginForm = new FormGroup({
       email: new FormControl("", Validators.email),
       password: new FormControl("")
@@ -22,7 +22,7 @@ loginForm: FormGroup
 
   ngOnInit(): void {
   }
-  onSubmit(){
+  onSubmit() {
     console.log(this.loginForm.value);
     this.authService.login(this.loginForm.value).subscribe(data => {
       console.log(data);

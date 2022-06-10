@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product, ProductCart } from 'src/types/Product';
+import { LocalStorageService } from '../services/local-storage.service';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class ProductDetailClientComponent implements OnInit {
   cartValue: number;
   constructor(
     private productService: ProductService,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private lsService: LocalStorageService
   ) {
     this._id = '';
       this.product = {
@@ -51,17 +53,18 @@ export class ProductDetailClientComponent implements OnInit {
       value: +this.cartValue
     };
     // 1. Lấy ra toàn bộ sp trong giỏ
-    const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
-    // 2. kiểm tra trong giỏ đã có phần tử có id giống cartItem chưa
-    const existItem = cartItems.find((item: ProductCart) =>
-      item._id === addItem._id
-    );
-    if (!existItem) {
-      cartItems.push(addItem);
-    } else {
-      existItem.value += addItem.value;
-    }
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+    // const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    // // 2. kiểm tra trong giỏ đã có phần tử có id giống cartItem chưa
+    // const existItem = cartItems.find((item: ProductCart) =>
+    //   item._id === addItem._id
+    // );
+    // if (!existItem) {
+    //   cartItems.push(addItem);
+    // } else {
+    //   existItem.value += addItem.value;
+    // }
+    // localStorage.setItem('cart', JSON.stringify(cartItems));
+    this.lsService.setItem(addItem);
     this.cartValue = 1;
   }
 

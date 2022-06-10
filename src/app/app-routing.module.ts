@@ -2,7 +2,10 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutClientComponent } from './about-client/about-client.component';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { CanAccessAdminGuard } from './can-access-admin.guard';
+import { CartShoppingComponent } from './cart-shopping/cart-shopping.component';
+import { CartComponent } from './cart/cart.component';
 import { HomeClientComponent } from './home-client/home-client.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
@@ -57,6 +60,10 @@ const routes: Routes = [
         component: ProductClientComponent
       },
       {
+        path: 'cart',
+        component: CartShoppingComponent
+      },
+      {
         path: 'product-detail/:_id',
         component: ProductDetailClientComponent
       },
@@ -109,6 +116,10 @@ const routes: Routes = [
       {
         path: "login",
         component: LoginComponent
+      },
+      {
+        path: "register",
+        component: RegisterComponent
       }
     ]
   }

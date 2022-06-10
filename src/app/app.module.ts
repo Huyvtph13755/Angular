@@ -22,6 +22,9 @@ import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-p
 import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
+import { CartComponent } from './cart/cart.component';
+import { CartShoppingComponent } from './cart-shopping/cart-shopping.component';
+import { RegisterComponent } from './auth/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,10 @@ import { LoginComponent } from './auth/login/login.component';
     AdminProductListComponent,
     AdminProductFormComponent,
     AdminProductDetailComponent,
-    LoginComponent
+    LoginComponent,
+    CartComponent,
+    CartShoppingComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
