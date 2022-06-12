@@ -1,22 +1,32 @@
 <div>
+    <h2>Quản lí sản phẩm</h2>
+</div>
+<div style="margin: 10px 0; text-align: right;">
     <a routerLink="/admin/products/create"><button class="btn btn-success">Create Product</button></a>
 </div>
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
+            <th>Ảnh</th>
+            <th>Tên</th>
+            <th>Giá (đ)</th>
+            <th>Giá giảm (%)</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let product of products">
-            <td>{{product._id}}</td>
+            <td><img src={{product.image}} style="width: 100px" alt=""></td>
             <td>{{product.name}}</td>
+            <th>{{product.price}}</th>
+            <th>{{product.sale_price}}</th>
+            <th *ngIf="product.status == 1"><button (click)="change(product._id)" class="hh">Hết hàng</button></th>
+            <th *ngIf="product.status == 0"><button (click)="change(product._id)" class="ch">Còn hàng</button></th>
             <td>
-                <a routerLink="/admin/products/{{product._id}}" class="btn btn-primary">Details</a>
                 <a routerLink="/admin/products/edit/{{product._id}}" class="btn btn-warning">Edit</a>
                 <!-- <a [routerLink]="['/admin', 'product', 'products._id']"></a> -->
-                <button (click)="onDel(product._id)" class="btn btn-danger">Del</button>
+                <button (click)="onDel(product._id)" style="margin-left: 10px;" class="btn btn-danger">Del</button>
             </td>
         </tr>
     </tbody>

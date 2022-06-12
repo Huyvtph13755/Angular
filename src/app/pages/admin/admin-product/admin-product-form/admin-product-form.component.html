@@ -1,16 +1,71 @@
-<div>
+<div style="margin: 10px 0; text-align:right">
     <a routerLink="/admin/products" class="btn btn-warning">Quay lại</a>
 </div>
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<img src="https://file.io/qjJa5jGXjNWh" alt="">
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" style="max-width: 600px">
     <div class="form-group">
+        <label class="control-label" for="product_categorie">DANH MỤC SẢN PHẨM</label>
+        <div class="">
+            <select id="product_categorie" name="Danh mục" class="form-control" formControlName="category">
+                <option *ngFor="let cate of category" value="{{cate._id}}">{{cate.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="product_name">TÊN SẢN PHẨM</label>
+        <div class="">
+            <input id="product_name" name="product_name" placeholder="Tên sản phẩm" class="form-control input-md" formControlName="name"
+                required="" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="author">TÁC GIẢ</label>
+        <div class="">
+            <input id="author" name="author" placeholder="Tác giả" class="form-control input-md" required="" formControlName="author"
+                type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="filebutton">ẢNH</label>
+        <div class="">
+            <input id="filebutton" name="filebutton" (change)="onChange($event)" class="input-file" type="file" formControlName="image">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="price">GIÁ NIÊM YẾT (đ)</label>
+        <div class="">
+            <input id="price" name="price" placeholder="Giá niêm yết" class="form-control input-md" formControlName="price"
+                required="" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="sale_price">GIẢM GIÁ (%)</label>
+        <div class="">
+            <input id="sale_price" name="sale_price" placeholder="" class="form-control input-md" formControlName="sale_price"
+                required="" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="product_description">MÔ TẢ</label>
+        <div class="">                     
+          <textarea class="form-control" id="product_description" name="product_description" formControlName="desc"></textarea>
+        </div>
+      </div>
+    <!-- <div class="form-group">
         <label for="">Product Name</label>
         <input type="text" class="form-control" formControlName="name">
         <app-show-validate 
             [field]="productForm.get('name')"
             key="Tên sản phẩm"
         ></app-show-validate>
-    </div>
+    </div> -->
     <div>
-        <button class="btn btn-success" [disabled]="!productForm.valid">Submit</button>
+        <button class="btn btn-success">Submit</button>
     </div>
+    
 </form>
+<!-- <div class="container text-center jumbotron"
+    *ngIf="shortLink">
+    <h2> Visit Here</h2>
+    <a href="{{shortLink}}">{{shortLink}}</a>
+</div> -->

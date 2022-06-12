@@ -17,7 +17,6 @@ import { ClientLayoutComponent } from './layouts/client-layout/client-layout.com
 import { HomeClientComponent } from './home-client/home-client.component';
 import { AdminProductListComponent } from './pages/admin/admin-product/admin-product-list/admin-product-list.component';
 import { AdminProductFormComponent } from './pages/admin/admin-product/admin-product-form/admin-product-form.component';
-import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-product-detail/admin-product-detail.component'
 // Đây là module cung cấp các phương thức để componient sử dụng gọi API
 import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +24,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { CartComponent } from './cart/cart.component';
 import { CartShoppingComponent } from './cart-shopping/cart-shopping.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AdminCategoryListComponent } from './pages/admin/admin-category/admin-category-list/admin-category-list.component';
+import { AdminCategoryFormComponent } from './pages/admin/admin-category/admin-category-form/admin-category-form.component';
+import { AdminUserListComponent } from './pages/admin/admin-user/admin-user-list/admin-user-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,11 +41,13 @@ import { RegisterComponent } from './auth/register/register.component';
     HomeClientComponent,
     AdminProductListComponent,
     AdminProductFormComponent,
-    AdminProductDetailComponent,
     LoginComponent,
     CartComponent,
     CartShoppingComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminCategoryListComponent,
+    AdminCategoryFormComponent,
+    AdminUserListComponent
   ],
   imports: [
     BrowserModule,

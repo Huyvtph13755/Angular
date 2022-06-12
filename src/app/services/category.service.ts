@@ -13,4 +13,18 @@ export class CategoryService {
   getCategory(): Observable <Category[]>{
     return this.http.get<Category[]>(environment.category)
   }
+  getCate(id: string): Observable <Category> {
+    return this.http.get<Category>(`${environment.category}/${id}`);
+  }
+  delCategory(_id: string | number): Observable <any>{
+    return this.http.delete(`${environment.category}/${_id}`)
+  }
+
+  createCategory(data : Category) : Observable<Category>{
+    return this.http.post<Category>(`${environment.category}`, data)
+  }
+
+  updateCategory(id: number | string, data: Category): Observable<Category>{
+    return this.http.put<Category>(`${environment.category}/${id}`, data)
+  }
 }

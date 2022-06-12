@@ -1,0 +1,26 @@
+<div>
+    <h2>Quản lí danh mục</h2>
+</div>
+<div style="margin: 10px 0; text-align: right;">
+    <a routerLink="/admin/category/create"><button class="btn btn-success">Create Category</button></a>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cate of category">
+            <td>{{cate.name}}</td>
+            <th *ngIf="cate.status == 1"><button (click)="change(cate._id)" class="hh">Hết hàng</button></th>
+            <th *ngIf="cate.status == 0"><button (click)="change(cate._id)" class="ch">Còn hàng</button></th>
+            <td>
+                <a routerLink="/admin/category/edit/{{cate._id}}" class="btn btn-warning">Edit</a>
+                <button (click)="onDel(cate._id)" style="margin-left: 10px;" class="btn btn-danger">Del</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

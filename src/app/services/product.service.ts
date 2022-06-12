@@ -20,14 +20,14 @@ export class ProductService {
     return this.http.get<Product>(`${environment.productss}/${id}`);
   }
   delProduct(_id: string | number): Observable <any>{
-    return this.http.delete(`${environment.products}/${_id}`)
+    return this.http.delete(`${environment.productss}/${_id}`)
   }
 
   createProduct(data : ProductCreateType) : Observable<Product>{
-    return this.http.post<Product>(`${environment.products}`, data)
+    return this.http.post<Product>(`${environment.productss}`, data)
   }
 
   updateProduct(id: number | string, data: ProductCreateType): Observable<Product>{
-    return this.http.put<Product>(`${environment.products}/${id}`, data)
+    return this.http.put<Product>(`${environment.productss}/${id}`, data)
   }
 }

@@ -29,7 +29,7 @@
                     </div>
                     <div class="col">{{(product.price - product.price*product.sale_price/100).toLocaleString('en-US')}}</div>
                     <div class="col">{{((product.price - product.price*product.sale_price/100) * product.value).toLocaleString('en-US')}}</div>
-                    <div class="col"><button style="border: none; background-color: rgb(253, 68, 68); color: white; border-radius: 5px">X</button></div>
+                    <div class="col"><button (click)="onRemove(product._id)" style="border: none; background-color: rgb(253, 68, 68); color: white; border-radius: 5px">X</button></div>
                 </div>
             </div>
 

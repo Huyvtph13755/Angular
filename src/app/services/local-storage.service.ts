@@ -40,4 +40,9 @@ export class LocalStorageService {
     this.storageSubject.next('');
     // thì watchStorage sẽ được phát sự kiện vào subscibe
   }
+  removeItem(_id: string){
+    const cartItems = this.getItem();
+    const afterCart = cartItems.filter((item: ProductCart) => item._id !== _id)
+    localStorage.setItem('cart', JSON.stringify(afterCart));
+  }
 }

@@ -22,7 +22,7 @@
             <div class="dropdown" *ngIf="loggedInUser">
               <button class="dropbtn btn btn-primary">{{loggedInUser.user.name}}</button>
               <div class="dropdown-content">
-                <a href="#" *ngIf="loggedInUser.user.role == 1">Admin</a>
+                <a routerLink="/admin/products" *ngIf="loggedInUser.user.role == 1">Admin</a>
                 <a routerLink="/cart">Giỏ hàng <app-cart></app-cart></a>
                 <button (click)="onLogout()">Đăng xuất</button>
               </div>

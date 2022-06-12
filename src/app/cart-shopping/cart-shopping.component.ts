@@ -22,6 +22,15 @@ export class CartShoppingComponent implements OnInit {
       this.onSetCart();
     })
   }
+  onRemove(id:string){
+    this.lsService.removeItem(id)
+    this.onSetCart()
+    this.cartItems = this.lsService.getItem();
+    this.cartItemValues = this.cartItems.reduce((a, b) => a + b.value, 0);
+    for(let i = 0; i < this.cartItems.length ; i++){
+      this.cartTotal += (this.cartItems[i].price - this.cartItems[i].price*this.cartItems[i].sale_price/100) * this.cartItems[i].value
+    }
+  }
   onSetCart() {
     this.cartItems = this.lsService.getItem();
     // this.cartItemValues = 0;
@@ -33,7 +42,5 @@ export class CartShoppingComponent implements OnInit {
     for(let i = 0; i < this.cartItems.length ; i++){
       this.cartTotal += (this.cartItems[i].price - this.cartItems[i].price*this.cartItems[i].sale_price/100) * this.cartItems[i].value
     }
-    console.log(this.cartTotal);
-    
   }
 }

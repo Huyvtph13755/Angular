@@ -9,35 +9,62 @@ import { Product } from 'src/types/Product';
 })
 export class AdminProductListComponent implements OnInit {
   products: Product[];
+  product: Product;
   _id: string;
-  constructor(private productService: ProductService) { 
+  constructor(private productService: ProductService) {
+    this.product = {
+      _id: "",
+      author: "",
+      name: "",
+      price: 0,
+      image: "",
+      sale_price: 0,
+      desc: "",
+      category: "",
+      status: 0
+    }
     this.products = [];
     this._id = ""
-   }
+  }
 
   ngOnInit(): void {
-    this._id = "0"
-    this.productService.getProductFilter(this._id).subscribe((data) => {
+    this.productService.getProducts().subscribe((data) => {
       this.products = data;
     })
     console.log(this.products);
-    
+
   }
   onGetList() {
-    this._id = "0"
-    this.productService.getProductFilter(this._id).subscribe((data) => {
+    this.productService.getProducts().subscribe((data) => {
       this.products = data;
     })
-    console.log(this.products);
   }
-  onDel(_id: string){
+  onDel(_id: string) {
     const confirmDel = confirm("Bạn có chắc chắn muốn xóa không?")
-    if(confirmDel && _id){
+    if (confirmDel && _id) {
       console.log(_id);
       this.productService.delProduct(_id).subscribe((data) => {
         console.log(data);
         this.onGetList();
       })
     }
+  }
+  change(_id: string) {
+    this.productService.getProduct(_id).subscribe(data => {
+      // gan gia tri cho form, padchValue nhan day du thuoc tinh cua form
+      this.product = data
+      if (this.product.status == 0) {
+        this.product.status = 1;
+        this.productService.updateProduct(_id, this.product).subscribe(data => {
+          this.onGetList()
+        });
+      }else if(this.product.status == 1){
+        this.product.status = 0;
+        this.productService.updateProduct(_id, this.product).subscribe(data => {
+          this.onGetList()
+        });
+      }
+    })
+
   }
 }

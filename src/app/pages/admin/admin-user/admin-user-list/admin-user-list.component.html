@@ -1,0 +1,20 @@
+<div>
+    <h2>Quản lí tài khoản</h2>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Vai trò</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <th *ngIf="user.role == 1"><button (click)="change(user._id)" class="hh">Admin</button></th>
+            <th *ngIf="user.role == 0"><button (click)="change(user._id)" class="ch">Khách hàng</button></th>
+        </tr>
+    </tbody>
+</table>
