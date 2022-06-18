@@ -1,7 +1,6 @@
 <div style="margin: 10px 0; text-align:right">
     <a routerLink="/admin/products" class="btn btn-warning">Quay lại</a>
 </div>
-<img src="https://file.io/qjJa5jGXjNWh" alt="">
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()" style="max-width: 600px">
     <div class="form-group">
         <label class="control-label" for="product_categorie">DANH MỤC SẢN PHẨM</label>
@@ -17,6 +16,7 @@
             <input id="product_name" name="product_name" placeholder="Tên sản phẩm" class="form-control input-md" formControlName="name"
                 required="" type="text">
         </div>
+        <app-show-validate [field]="productForm.get('name')" key="tên sản phẩm"></app-show-validate>
     </div>
     <div class="form-group">
         <label class="control-label" for="author">TÁC GIẢ</label>
@@ -24,11 +24,15 @@
             <input id="author" name="author" placeholder="Tác giả" class="form-control input-md" required="" formControlName="author"
                 type="text">
         </div>
+        <app-show-validate [field]="productForm.get('author')" key="tác giả"></app-show-validate>
     </div>
     <div class="form-group">
-        <label class="control-label" for="filebutton">ẢNH</label>
+        <label class="control-label" for="filebutton">ẢNH (Nếu bạn cập nhật ảnh, vui lòng chờ ảnh Preview load xong)</label>
         <div class="">
             <input id="filebutton" name="filebutton" (change)="onChange($event)" class="input-file" type="file" formControlName="image">
+        </div>
+        <div>
+            <img src={{this.img}} alt="" style="width: 200px; margin-top: 5px; border-radius: 10px">
         </div>
     </div>
     <div class="form-group">
@@ -37,6 +41,7 @@
             <input id="price" name="price" placeholder="Giá niêm yết" class="form-control input-md" formControlName="price"
                 required="" type="number">
         </div>
+        <app-show-validate [field]="productForm.get('price')" key="giá sản phẩm"></app-show-validate>
     </div>
     <div class="form-group">
         <label class="control-label" for="sale_price">GIẢM GIÁ (%)</label>
@@ -44,6 +49,7 @@
             <input id="sale_price" name="sale_price" placeholder="" class="form-control input-md" formControlName="sale_price"
                 required="" type="number">
         </div>
+        <app-show-validate [field]="productForm.get('price')" key="giá sản phẩm"></app-show-validate>
     </div>
     <div class="form-group">
         <label class="control-label" for="product_description">MÔ TẢ</label>
@@ -51,14 +57,7 @@
           <textarea class="form-control" id="product_description" name="product_description" formControlName="desc"></textarea>
         </div>
       </div>
-    <!-- <div class="form-group">
-        <label for="">Product Name</label>
-        <input type="text" class="form-control" formControlName="name">
-        <app-show-validate 
-            [field]="productForm.get('name')"
-            key="Tên sản phẩm"
-        ></app-show-validate>
-    </div> -->
+      <app-show-validate [field]="productForm.get('desc')" key="mô tả"></app-show-validate>
     <div>
         <button class="btn btn-success">Submit</button>
     </div>

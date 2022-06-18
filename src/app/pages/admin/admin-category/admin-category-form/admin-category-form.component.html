@@ -8,15 +8,8 @@
             <input id="name" name="name" placeholder="Tên danh mục" class="form-control input-md" formControlName="name"
                 required="" type="text">
         </div>
+        <app-show-validate [field]="categoryForm.get('name')" key="tên danh mục"></app-show-validate>
     </div>
-    <!-- <div class="form-group">
-        <label for="">Product Name</label>
-        <input type="text" class="form-control" formControlName="name">
-        <app-show-validate 
-            [field]="productForm.get('name')"
-            key="Tên sản phẩm"
-        ></app-show-validate>
-    </div> -->
     <div>
         <button class="btn btn-success">Submit</button>
     </div>

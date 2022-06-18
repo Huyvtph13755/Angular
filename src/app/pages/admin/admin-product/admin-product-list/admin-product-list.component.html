@@ -19,7 +19,7 @@
         <tr *ngFor="let product of products">
             <td><img src={{product.image}} style="width: 100px" alt=""></td>
             <td>{{product.name}}</td>
-            <th>{{product.price}}</th>
+            <th>{{product.price.toLocaleString('en-US')}}</th>
             <th>{{product.sale_price}}</th>
             <th *ngIf="product.status == 1"><button (click)="change(product._id)" class="hh">Hết hàng</button></th>
             <th *ngIf="product.status == 0"><button (click)="change(product._id)" class="ch">Còn hàng</button></th>

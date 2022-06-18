@@ -4,6 +4,7 @@ import { AboutClientComponent } from './about-client/about-client.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CanAccessAdminGuard } from './can-access-admin.guard';
+import { CanAccessClientGuard } from './can-access-client.guard';
 import { CartShoppingComponent } from './cart-shopping/cart-shopping.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeClientComponent } from './home-client/home-client.component';
@@ -136,6 +137,7 @@ const routes: Routes = [
   },
   {
     path: "auth",
+    canActivate: [CanAccessClientGuard],
     children: [
       {
         path: "login",

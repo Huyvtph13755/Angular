@@ -4,6 +4,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 import { IdentityComponent } from './identity/identity.component';
 import { FormComponent } from './form/form.component';
 // Import FormsModule để dùng
@@ -27,6 +31,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AdminCategoryListComponent } from './pages/admin/admin-category/admin-category-list/admin-category-list.component';
 import { AdminCategoryFormComponent } from './pages/admin/admin-category/admin-category-form/admin-category-form.component';
 import { AdminUserListComponent } from './pages/admin/admin-user/admin-user-list/admin-user-list.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +60,13 @@ import { AdminUserListComponent } from './pages/admin/admin-user/admin-user-list
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      progressBar: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

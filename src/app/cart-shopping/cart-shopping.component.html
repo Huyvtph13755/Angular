@@ -25,7 +25,7 @@
                         <div class="row">{{product.author}}</div>
                     </div>
                     <div class="col">
-                        <a href="#">-</a><a href="#" class="border">{{product.value}}</a><a href="#">+</a>
+                        <button class="border" (click)="down(product._id)">-</button><button class="border">{{product.value}}</button><button class="border" (click)="up(product._id)">+</button>
                     </div>
                     <div class="col">{{(product.price - product.price*product.sale_price/100).toLocaleString('en-US')}}</div>
                     <div class="col">{{((product.price - product.price*product.sale_price/100) * product.value).toLocaleString('en-US')}}</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/category.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -25,7 +26,8 @@ export class AdminProductFormComponent implements OnInit {
     private router: Router,
     private activateRoute: ActivatedRoute,
     private categoryService: CategoryService,
-    private fileUploadService: FileUploadService
+    private fileUploadService: FileUploadService,
+    private toastr: ToastrService
   ) {
     this.imgOld = "";
     this.img = ""
@@ -35,16 +37,14 @@ export class AdminProductFormComponent implements OnInit {
     this.category = [];
     this.productForm = new FormGroup({
       name: new FormControl('', [Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(32),
-      this.onValidateNameHasProduct //custom
+      Validators.minLength(6)
       ]),
-      category: new FormControl(''),
-      author: new FormControl(''),
+      category: new FormControl('',Validators.required),
+      author: new FormControl('',Validators.required),
       image: new FormControl(''),
-      price: new FormControl(''),
-      sale_price: new FormControl(''),
-      desc: new FormControl(''),
+      price: new FormControl('', Validators.required),
+      sale_price: new FormControl('', Validators.required),
+      desc: new FormControl('', Validators.required),
 
     })
     this.productId = "0";
@@ -55,7 +55,6 @@ export class AdminProductFormComponent implements OnInit {
       this.category = data;
     })
     this.productId = this.activateRoute.snapshot.params['_id'];
-    console.log(this.productId);
     this.productService.getProduct(this.productId).subscribe(data => {
       this.imgOld = data.image
       // gan gia tri cho form, padchValue nhan day du thuoc tinh cua form
@@ -76,17 +75,6 @@ export class AdminProductFormComponent implements OnInit {
     this.fileUploadService.upload(this.file).subscribe((data) => {
       this.img = data.secure_url
     })
-
-
-  }
-  onValidateNameHasProduct(control: AbstractControl): ValidationErrors | null {
-    const { value } = control;
-    if (!value.includes('product')) {
-      return { hasProductErr: true };
-    }
-    // trả về kq nếu không lỗi
-    return null;
-
   }
   onSubmit() {
     const submitData = this.productForm.value;
@@ -95,15 +83,18 @@ export class AdminProductFormComponent implements OnInit {
     } else {
       submitData.image = this.img
     }
-    console.log(submitData.image);
+    console.log(submitData);
 
     if (this.productId !== '0' && this.productId !== undefined) {
       return this.productService.updateProduct(this.productId, submitData).subscribe(data => {
         this.router.navigateByUrl('/admin/products');
+        this.toastr.success('Thông báo', 'Cập nhật sản phẩm thành công')
       });
     }
     return this.productService.createProduct(submitData).subscribe((data) => {
       this.router.navigateByUrl('/admin/products');
+      this.toastr.success('Thông báo', 'Thêm sản phẩm thành công')
     })
+    
   }
 }

@@ -23,12 +23,7 @@ export class CartComponent implements OnInit {
   }
   onSetCart() {
     this.cartItems = this.lsService.getItem();
-    // this.cartItemValues = 0;
-    // this.cartItems.forEach(item => {
-    //   this.cartItemValues += item.value;
-    // })
     this.cartItemValues = this.cartItems.reduce((a, b) => a + b.value, 0);
-    console.log(this.cartItems);
-    
+    console.log(this.cartItemValues);
   }
 }

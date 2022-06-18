@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -15,9 +16,10 @@ export class AdminCategoryFormComponent implements OnInit {
     private categoryService: CategoryService,
     private router: Router,
     private activateRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) {
     this.categoryForm = new FormGroup({
-      name: new FormControl('')
+      name: new FormControl('', Validators.required)
     })
     this.categoryId = ""
   }
@@ -38,6 +40,7 @@ export class AdminCategoryFormComponent implements OnInit {
     if (this.categoryId !== '0' && this.categoryId !== undefined) {
       return this.categoryService.updateCategory(this.categoryId, submitData).subscribe(data => {
         this.router.navigateByUrl('/admin/category');
+        this.toastr.success('Thông báo', 'Cập nhật danh mục thành công')
       });
 
     }
@@ -47,6 +50,7 @@ export class AdminCategoryFormComponent implements OnInit {
       // 3. Sau khi API call thành công sẽ điều hướng về danh sách
       // this.router.navigate(['/admin', 'products']);
       this.router.navigateByUrl('/admin/category');
+      this.toastr.success('Thông báo', 'Thêm danh mục thành công')
     })
   }
 }

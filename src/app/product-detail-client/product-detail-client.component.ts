@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Product, ProductCart } from 'src/types/Product';
 import { LocalStorageService } from '../services/local-storage.service';
 import { ProductService } from '../services/product.service';
@@ -16,7 +17,8 @@ export class ProductDetailClientComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private activateRoute: ActivatedRoute,
-    private lsService: LocalStorageService
+    private lsService: LocalStorageService,
+    private toastr : ToastrService
   ) {
     this._id = '';
       this.product = {
@@ -52,20 +54,9 @@ export class ProductDetailClientComponent implements OnInit {
       ...this.product,
       value: +this.cartValue
     };
-    // 1. Lấy ra toàn bộ sp trong giỏ
-    // const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
-    // // 2. kiểm tra trong giỏ đã có phần tử có id giống cartItem chưa
-    // const existItem = cartItems.find((item: ProductCart) =>
-    //   item._id === addItem._id
-    // );
-    // if (!existItem) {
-    //   cartItems.push(addItem);
-    // } else {
-    //   existItem.value += addItem.value;
-    // }
-    // localStorage.setItem('cart', JSON.stringify(cartItems));
     this.lsService.setItem(addItem);
     this.cartValue = 1;
+    this.toastr.success('Thông báo', 'Thêm sản phẩm vào giỏ hàng thành công!')
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/types/Product';
 
@@ -11,7 +12,9 @@ export class AdminProductListComponent implements OnInit {
   products: Product[];
   product: Product;
   _id: string;
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+    private toastr: ToastrService
+    ) {
     this.product = {
       _id: "",
       author: "",
@@ -47,6 +50,7 @@ export class AdminProductListComponent implements OnInit {
         console.log(data);
         this.onGetList();
       })
+      this.toastr.success('Thông báo', 'Xóa thành công')
     }
   }
   change(_id: string) {
@@ -58,11 +62,13 @@ export class AdminProductListComponent implements OnInit {
         this.productService.updateProduct(_id, this.product).subscribe(data => {
           this.onGetList()
         });
+        this.toastr.success('Thông báo', 'Cập nhật trạng thái thành công')
       }else if(this.product.status == 1){
         this.product.status = 0;
         this.productService.updateProduct(_id, this.product).subscribe(data => {
           this.onGetList()
         });
+        this.toastr.success('Thông báo', 'Cập nhật trạng thái thành công')
       }
     })
 

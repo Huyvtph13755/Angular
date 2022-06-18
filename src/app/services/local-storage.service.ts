@@ -21,7 +21,7 @@ export class LocalStorageService {
     return JSON.parse(localStorage.getItem('cart') || '[]');
   }
 
-  setItem(addItem:ProductCart) {
+  setItem(addItem: ProductCart) {
     // Nghiệp vụ thêm sp vào giỏ
     // 1. Lấy ra toàn bộ sp trong giỏ
     const cartItems = this.getItem();
@@ -40,9 +40,29 @@ export class LocalStorageService {
     this.storageSubject.next('');
     // thì watchStorage sẽ được phát sự kiện vào subscibe
   }
-  removeItem(_id: string){
+  removeItem(_id: string) {
     const cartItems = this.getItem();
     const afterCart = cartItems.filter((item: ProductCart) => item._id !== _id)
     localStorage.setItem('cart', JSON.stringify(afterCart));
+    this.storageSubject.next('');
+  }
+  decreaseQuantity(_id: string) {
+    var cartItems = this.getItem();
+    const currentProduct = cartItems.find((item: ProductCart) => item._id === _id);
+    currentProduct.value--;
+    if (currentProduct.value < 1) {
+      const confirm = window.confirm("Bạn có muốn xóa sản phẩm không?");
+      if (confirm) {
+        cartItems = cartItems.filter((item: ProductCart) => item._id !== _id);
+      }
+    }
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    this.storageSubject.next('');
+  }
+  increaseQuantity(_id: string){
+    var cartItems = this.getItem();
+    cartItems.find((item: ProductCart) => item._id === _id).value++;
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    this.storageSubject.next('');
   }
 }

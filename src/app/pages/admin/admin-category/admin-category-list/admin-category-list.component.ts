@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/types/Category';
 
@@ -10,7 +11,9 @@ import { Category } from 'src/types/Category';
 export class AdminCategoryListComponent implements OnInit {
   category: Category[];
   cate: Category;
-  constructor( private categoryService: CategoryService) { 
+  constructor( private categoryService: CategoryService,
+    private toastr: ToastrService
+    ) { 
     this.cate = {
       _id: "",
       name: "",
@@ -38,6 +41,7 @@ export class AdminCategoryListComponent implements OnInit {
         this.onGetList();
       })
     }
+    this.toastr.success('Thông báo', 'Xóa thành công')
   }
   change(_id: string) {
     this.categoryService.getCate(_id).subscribe(data => {
@@ -48,11 +52,13 @@ export class AdminCategoryListComponent implements OnInit {
         this.categoryService.updateCategory(_id, this.cate).subscribe(data => {
           this.onGetList()
         });
+        this.toastr.success('Thông báo', 'Cập nhật trạng thái thành công')
       }else if(this.cate.status == 1){
         this.cate.status = 0;
         this.categoryService.updateCategory(_id, this.cate).subscribe(data => {
           this.onGetList()
         });
+        this.toastr.success('Thông báo', 'Cập nhật trạng thái thành công')
       }
     })
     

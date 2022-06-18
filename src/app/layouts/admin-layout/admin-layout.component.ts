@@ -13,6 +13,8 @@ export class AdminLayoutComponent implements OnInit {
   ) { }
   loggedInUser = JSON.parse(localStorage.getItem('user') as string);
   ngOnInit(): void {
+    console.log(this.loggedInUser);
+    
   }
   onLogout(){
     localStorage.removeItem('user');
